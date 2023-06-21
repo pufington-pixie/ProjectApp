@@ -1,0 +1,37 @@
+<div class="container">
+    <h2>{{ isNewproject ? 'Add project' : 'Update project' }}</h2>
+    <form (ngSubmit)="saveproject()" #projectForm="ngForm" novalidate>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" class="form-control" [(ngModel)]="project['title']" required>
+        <div *ngIf="projectForm.submitted && projectForm.controls['title'].invalid" class="text-danger">
+          Title is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author" class="form-control" [(ngModel)]="project['author']" required>
+        <div *ngIf="projectForm.submitted && projectForm.controls['author'].invalid" class="text-danger">
+          Author is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" class="form-control" [(ngModel)]="project['Description']" required></textarea>
+        <div *ngIf="projectForm.submitted && projectForm.controls['description'].invalid" class="text-danger">
+          Description is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" class="form-control" [(ngModel)]="project['price']" required>
+        <div *ngIf="projectForm.submitted && projectForm.controls['price'].invalid" class="text-danger">
+          Price is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">{{ isNewproject ? 'Add' : 'Update' }}</button>
+      </div>
+    </form>
+  </div>
+  
