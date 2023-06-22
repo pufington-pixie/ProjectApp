@@ -6,7 +6,7 @@ export interface project {
   Date:string,
   StatusId:number,
   BranchId:number,
-  Sapnumber:number,
+  SapNumber:number,
   Notes:string,
   ServiceId:string,
   ServiceName:string,

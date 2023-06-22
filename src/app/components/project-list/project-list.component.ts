@@ -11,7 +11,7 @@ import { projectService } from 'src/app/services/project.service';
   providers:[projectService]
 })
 export class projectListComponent implements OnInit {
-  projects: any = [];
+  projects: project[] = [];
   selectedproject: project | null = null;
 
   constructor(private projectService: projectService, private router: Router) { }
@@ -22,8 +22,8 @@ export class projectListComponent implements OnInit {
 
   getprojects() {
     this.projectService.getprojects().subscribe(
-      (response: any) => {
-        this.projects = response.data;
+      (response: project[]) => {
+        this.projects = response;
         console.log(response);
       }
     );
@@ -39,15 +39,15 @@ export class projectListComponent implements OnInit {
       Description: '',
       StatusId: 0,
       BranchId: 0,
-      Sapnumber: 0,
+      SapNumber: 0,
       Notes: '',
       ServiceId: '',
       ServiceName: ''
     };
 
     this.projectService.createproject(newProject).subscribe(
-      (response: any) => {
-        this.projects = response.data;
+      (response: project[]) => {
+        this.projects = response;
         console.log('New project created:', newProject);
       }
     );

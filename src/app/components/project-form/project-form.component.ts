@@ -19,7 +19,7 @@ export class projectFormComponent implements OnInit {
     Description:'string',
     StatusId:0,
     BranchId:0,
-    Sapnumber:0,
+    SapNumber:0,
     Notes:'string',
     ServiceId:'string',
     ServiceName:'string',

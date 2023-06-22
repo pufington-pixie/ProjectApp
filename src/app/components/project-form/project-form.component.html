@@ -2,6 +2,13 @@
     <h2>{{ isNewproject ? 'Add project' : 'Update project' }}</h2>
     <form (ngSubmit)="saveproject()" #projectForm="ngForm" novalidate>
       <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" id="Name" name="Name" class="form-control" [(ngModel)]="project['Name']" required>
+        <div *ngIf="projectForm.submitted && projectForm.controls['Name'].invalid" class="text-danger">
+          Name is required.
+        </div>
+      </div>
+      <div class="form-group">
         <label for="title">Title</label>
         <input type="text" id="title" name="title" class="form-control" [(ngModel)]="project['title']" required>
         <div *ngIf="projectForm.submitted && projectForm.controls['title'].invalid" class="text-danger">
@@ -9,17 +16,17 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="author">Author</label>
-        <input type="text" id="author" name="author" class="form-control" [(ngModel)]="project['author']" required>
-        <div *ngIf="projectForm.submitted && projectForm.controls['author'].invalid" class="text-danger">
-          Author is required.
-        </div>
-      </div>
-      <div class="form-group">
         <label for="description">Description</label>
         <textarea id="description" name="description" class="form-control" [(ngModel)]="project['Description']" required></textarea>
         <div *ngIf="projectForm.submitted && projectForm.controls['description'].invalid" class="text-danger">
           Description is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Notes">Notes</label>
+        <textarea id="Notes" name="Notes" class="form-control" [(ngModel)]="project['Notes']" required></textarea>
+        <div *ngIf="projectForm.submitted && projectForm.controls['Notes'].invalid" class="text-danger">
+          Notes is required.
         </div>
       </div>
       <div class="form-group">
