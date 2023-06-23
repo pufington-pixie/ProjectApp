@@ -1,29 +1,33 @@
-import { NgModule } from '@angular/core';
+import { ClassProvider, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
-import { projectDetailsComponent } from './components/project-details/project-details.component';
-import { projectFormComponent } from './components/project-form/project-form.component';
-import { projectListComponent } from './components/project-list/project-list.component';
-import { projectUploadComponent } from './components/project-upload/project-upload.component';
+
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from  './components/sidebar/sidebar.component';
-import { Routes } from '@angular/router';
+import { ProjectListComponent } from './components/project-list/project-list.component';
+import { ProjectFormComponent } from './components/project-form/project-form.component';
+import { LoggingInterceptor } from './services/logging-interceptor.service';
+
+const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
+  provide: HTTP_INTERCEPTORS ,
+  useClass: LoggingInterceptor,
+  multi: true
+};
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    projectListComponent,
-    projectDetailsComponent,
-    projectFormComponent,
-    projectUploadComponent,
+    ProjectListComponent,
+    ProjectFormComponent,
+    ProjectFormComponent,
     NavbarComponent,
     SidebarComponent
     
@@ -34,7 +38,7 @@ import { Routes } from '@angular/router';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ LOGGING_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

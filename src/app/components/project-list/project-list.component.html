@@ -10,10 +10,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let project of projects" [class.selected]="selectedproject === project" (click)="selectproject(project)">
-        <td>{{ project.Id }}</td>
-        <td>{{ project.Title }}</td>
-        <td>{{ project.Date }}</td>
+      <tr *ngFor="let project of projects" [class.selected]="selectedProjectId === project.id" (click)="selectProject(project)">
+        <td>{{ project.id }}</td>
+        <td>{{ project.title }}</td>
+        <td>{{ project.date }}</td>
       </tr>
     </tbody>
   </table>
@@ -23,8 +23,8 @@
   </div>
 
   <div class="button-container">
-    <button class="btn btn-primary" [disabled]="!selectedproject" (click)="editproject()">Edit</button>
-    <button class="btn btn-primary" [disabled]="!selectedproject" (click)="deleteProject()">Delete</button>
-    <button class="btn btn-primary" (click)="createproject()">New</button>
+    <button class="btn btn-primary" [disabled]="!selectedProjectId" (click)="editProject()">Edit</button>
+    <button class="btn btn-primary" [disabled]="!selectedProjectId" (click)="deleteProject()">Delete</button>
+    <button class="btn btn-primary" (click)="createProject()">New</button>
   </div>
 </div>

@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { project } from 'src/app/models/project';
-import { projectService } from 'src/app/services/project.service';
+import { Project } from 'src/app/models/project';
+import { ProjectService } from 'src/app/services/project.service';
+
 
 
 @Component({
   selector: 'app-project-upload',
   templateUrl: './project-upload.component.html',
   styleUrls: ['./project-upload.component.css'],
-  providers:[projectService]
+  providers:[ProjectService]
 })
-export class projectUploadComponent implements OnInit {
+export class ProjectUploadComponent implements OnInit {
   fileSelected: boolean = false;
-  projects: project[] = [];
+  projects: Project[] = [];
 
   constructor(
-    private projectService: projectService,
+    private projectService: ProjectService,
   
   ) {}
 

@@ -1,44 +1,84 @@
 <div class="container">
-    <h2>{{ isNewproject ? 'Add project' : 'Update project' }}</h2>
-    <form (ngSubmit)="saveproject()" #projectForm="ngForm" novalidate>
-      <div class="form-group">
-        <label for="Name">Name</label>
-        <input type="text" id="Name" name="Name" class="form-control" [(ngModel)]="project['Name']" required>
-        <div *ngIf="projectForm.submitted && projectForm.controls['Name'].invalid" class="text-danger">
-          Name is required.
+  <h2 class="mb-4">{{ isNewProject ? 'Add project' : 'Update project' }}</h2>
+  <form (ngSubmit)="saveProject()" #projectForm="ngForm" novalidate>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="Id">ID</label>
+          <input type="number" id="Id" name="Id" class="form-control" [(ngModel)]="project.id" required>
+          <div *ngIf="projectForm.submitted && projectForm.controls['Id'].invalid" class="text-danger">
+            ID is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Name">Name</label>
+          <input type="text" id="Name" name="Name" class="form-control" [(ngModel)]="project.name" required>
+          <div *ngIf="projectForm.submitted && projectForm.controls['Name'].invalid" class="text-danger">
+            Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Title">Title</label>
+          <input type="text" id="Title" name="Title" class="form-control" [(ngModel)]="project.title" required>
+          <div *ngIf="projectForm.submitted && projectForm.controls['Title'].invalid" class="text-danger">
+            Title is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Notes">Notes</label>
+          <textarea id="Notes" name="Notes" class="form-control" [(ngModel)]="project.notes" required></textarea>
+          <div *ngIf="projectForm.submitted && projectForm.controls['Notes'].invalid" class="text-danger">
+            Notes is required.
+          </div>
         </div>
       </div>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title" class="form-control" [(ngModel)]="project['title']" required>
-        <div *ngIf="projectForm.submitted && projectForm.controls['title'].invalid" class="text-danger">
-          Title is required.
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="Date">Date</label>
+          <input type="text" id="Date" name="Date" class="form-control" [(ngModel)]="project.date" required>
+          <div *ngIf="projectForm.submitted && projectForm.controls['Date'].invalid" class="text-danger">
+            Date is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="StatusId">Status ID</label>
+          <input type="number" id="StatusId" name="StatusId" class="form-control" [(ngModel)]="project.statusId" required>
+          <div *ngIf="projectForm.submitted && projectForm.controls['StatusId'].invalid" class="text-danger">
+            Status ID is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="BranchId">Branch ID</label>
+          <input type="number" id="BranchId" name="BranchId" class="form-control" [(ngModel)]="project.branchId" required>
+          <div *ngIf="projectForm.submitted && projectForm.controls['BranchId'].invalid" class="text-danger">
+            Branch ID is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="SapNumber">SAP Number</label>
+          <input type="text" id="SapNumber" name="SapNumber" class="form-control" [(ngModel)]="project.sapNumber" required>
+          <div *ngIf="projectForm.submitted && projectForm.controls['SapNumber'].invalid" class="text-danger">
+            SAP Number is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ServiceId">Service ID</label>
+          <input type="number" id="ServiceId" name="ServiceId" class="form-control" [(ngModel)]="project.services.serviceId" required>
+          <div *ngIf="projectForm.submitted && projectForm.controls['ServiceId'].invalid" class="text-danger">
+            Service ID is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ServiceName">Service Name</label>
+          <input type="text" id="ServiceName" name="ServiceName" class="form-control" [(ngModel)]="project.services.serviceName" required>
+          <div *ngIf="projectForm.submitted && projectForm.controls['ServiceName'].invalid" class="text-danger">
+            Service Name is required.
+          </div>
         </div>
       </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" name="description" class="form-control" [(ngModel)]="project['Description']" required></textarea>
-        <div *ngIf="projectForm.submitted && projectForm.controls['description'].invalid" class="text-danger">
-          Description is required.
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="Notes">Notes</label>
-        <textarea id="Notes" name="Notes" class="form-control" [(ngModel)]="project['Notes']" required></textarea>
-        <div *ngIf="projectForm.submitted && projectForm.controls['Notes'].invalid" class="text-danger">
-          Notes is required.
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="price">Price</label>
-        <input type="number" id="price" name="price" class="form-control" [(ngModel)]="project['price']" required>
-        <div *ngIf="projectForm.submitted && projectForm.controls['price'].invalid" class="text-danger">
-          Price is required.
-        </div>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">{{ isNewproject ? 'Add' : 'Update' }}</button>
-      </div>
-    </form>
-  </div>
-  
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">{{ isNewProject ? 'Add' : 'Update' }}</button>
+    </div>
+  </form>
+</div>

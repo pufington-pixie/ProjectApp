@@ -1,14 +1,15 @@
-export interface project {
-  Id:number,
-  Name:string,
-  Title:string,
-  Description:string,
-  Date:string,
-  StatusId:number,
-  BranchId:number,
-  SapNumber:number,
-  Notes:string,
-  ServiceId:string,
-  ServiceName:string,
+export interface Project {
+  id: number;
+  name: string;
+  title: string;
+  date: string;
+  statusId: number;
+  branchId: number;
+  sapNumber: string;
+  notes: string;
+  services: {
+    serviceId: number;
+    serviceName: string;
   }
-  
+
+}
