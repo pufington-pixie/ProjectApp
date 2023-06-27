@@ -9,10 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidebarComponent } from  './components/sidebar/sidebar.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { ProjectFormComponent } from './components/project-form/project-form.component';
 import { LoggingInterceptor } from './services/logging-interceptor.service';
+import { ProjectUploadComponent } from './components/project-upload/project-upload.component';
 
 const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
   provide: HTTP_INTERCEPTORS ,
@@ -29,8 +29,7 @@ const LOGGING_INTERCEPTOR_PROVIDER: ClassProvider = {
     ProjectFormComponent,
     ProjectFormComponent,
     NavbarComponent,
-    SidebarComponent
-    
+    ProjectUploadComponent
   ],
   imports: [
     BrowserModule,

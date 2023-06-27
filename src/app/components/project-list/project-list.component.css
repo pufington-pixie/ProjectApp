@@ -4,15 +4,8 @@
 
 .button-container {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -40px; 
+  right: 10px; 
   display: flex;
-  align-items: flex-start;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-.button-container button {
-  flex: 1;
-  margin-left: 10px;
+  gap: 10px;
 }

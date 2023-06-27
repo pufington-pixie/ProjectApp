@@ -1,6 +1,6 @@
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+      <a class="navbar-brand" >ProjectApp</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -13,23 +13,20 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="" routerLinkActive="active">Home </a>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/projects" routerLinkActive="active">Projects</a>
+            <a class="nav-link" routerLink="projects" routerLinkActive="active">Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/projects" routerLinkActive="active">Datapoints</a>
+            <a class="nav-link" routerLink="services" routerLinkActive="active">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="data" routerLinkActive="active">Datapoints</a>
           </li>
         </ul>
       </div>
-    </nav>
-    <router-outlet></router-outlet>
-  </div>
-  
-
-
-
-
+    </div>
+  </nav>

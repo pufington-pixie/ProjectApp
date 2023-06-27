@@ -8,7 +8,7 @@ import { ProjectUploadComponent } from './components/project-upload/project-uplo
 import { HomeComponent } from './components/home/home.component';
 
 const routes : Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'projects', component: ProjectListComponent },
   { path: 'projects/new', component: ProjectFormComponent },
   { path: 'projects/:id/edit', component: ProjectFormComponent },

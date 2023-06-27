@@ -1,42 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Component, Input } from '@angular/core';
+import { tap } from 'rxjs';
 import { Project } from 'src/app/models/project';
-import { ProjectService } from 'src/app/services/project.service';
-
-
+import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
   selector: 'app-project-upload',
   templateUrl: './project-upload.component.html',
   styleUrls: ['./project-upload.component.css'],
-  providers:[ProjectService]
+  providers: [FileUploadService]
 })
-export class ProjectUploadComponent implements OnInit {
-  fileSelected: boolean = false;
-  projects: Project[] = [];
+export class ProjectUploadComponent {
+  selectedFile: File | undefined;
+  @Input() projectId: number | null = null;
 
-  constructor(
-    private projectService: ProjectService,
+  constructor(private http: HttpClient, private uploadService: FileUploadService) {}
   
-  ) {}
 
-  ngOnInit(): void {
- 
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] as File;
   }
-
-  onFileChange(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.fileSelected = true;
-    } else {
-      this.fileSelected = false;
+  onSubmit() {
+    if (this.selectedFile && this.projectId) {
+      this.uploadService.uploadFile(this.selectedFile, this.projectId)
+        .pipe(
+          tap((response: HttpResponse<any>) => {
+            console.log('CSV file uploaded successfully!', response);
+          })
+        )
+        .subscribe(
+          () => {}
+        );
     }
-  }
-
-  onSubmit(): void {
-    if (!this.fileSelected) {
-      return;
-    }
-  
-    
   }
 }

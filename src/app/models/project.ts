@@ -7,6 +7,7 @@ export interface Project {
   branchId: number;
   sapNumber: string;
   notes: string;
+  filePath: string;
   services: {
     serviceId: number;
     serviceName: string;
