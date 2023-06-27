@@ -9,7 +9,7 @@ export interface Project {
   notes: string;
   filePath: string;
   services: {
-    serviceId: number;
+    id: number;
     serviceName: string;
   }
 
