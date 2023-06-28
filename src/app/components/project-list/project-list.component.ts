@@ -46,11 +46,6 @@ export class ProjectListComponent implements OnInit {
   deleteProject() {
     if (this.selectedProjectId && confirm('Are you sure you want to delete this project?')) {
       this.projectService.deleteProject(this.selectedProjectId)
-        .pipe(
-          tap(() => {
-            console.log('DELETE Project:', this.selectedProjectId);
-          })
-        )
         .subscribe(() => {
           console.log('Project deleted:', this.selectedProjectId);
           this.getProjects();
