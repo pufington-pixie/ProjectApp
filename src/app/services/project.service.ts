@@ -23,18 +23,11 @@ export class ProjectService {
     return this.http.post<Project[]>(`${this.apiUrl}/projects`, project);
   }
 
-  updateProject(id: number, project: Project): Observable<Project> {
-    return this.http.put<Project>(`${this.apiUrl}/projects/${id}`, project);
+  updateProject(id: number, project: Project): Observable<Project[]> {
+    return this.http.put<Project[]>(`${this.apiUrl}/projects/${id}`, project);
   }
 
   deleteProject(id: number): Observable<Project> {
     return this.http.delete<Project>(`${this.apiUrl}/projects/${id}`);
-  }
-  deleteProjects(projects: Project[]): Observable<Project[]> {
-    return forkJoin(
-      projects.map((project) =>
-        this.http.delete<Project>(`${this.apiUrl}/${project.id}`)
-      )
-    );
   }
 }

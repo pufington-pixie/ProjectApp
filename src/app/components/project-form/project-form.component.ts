@@ -50,7 +50,7 @@ export class ProjectFormComponent implements OnInit {
   getProject(projectId: number): void {
     this.projectService.getProject(projectId).subscribe(
       (response: any) => {
-        this.project = response.data as Project;
+        this.project = response.data ;
        }
     );
   }
