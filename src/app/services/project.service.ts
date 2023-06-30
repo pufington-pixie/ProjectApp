@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
-import { Project } from '../models/project';
+import { Project, ProjectResponse } from '../models/project';
 
 @Injectable({
   providedIn: 'root'
@@ -11,30 +11,28 @@ export class ProjectService {
 
   constructor(private http: HttpClient) {}
 
-  getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(`${this.apiUrl}/projects`);
+  // Create a project
+  createProject(project: Project): Observable<ProjectResponse> {
+    return this.http.post<ProjectResponse>(`${this.apiUrl}/projects`, project);
   }
 
-  getProject(id: number): Observable<Project> {
-    return this.http.get<Project>(`${this.apiUrl}/projects/${id}`);
+  // Get a project by ID
+  getProject(id: number): Observable<ProjectResponse> {
+    return this.http.get<ProjectResponse>(`${this.apiUrl}/projects/${id}`);
   }
 
-  createProject(project: Project): Observable<Project[]> {
-    return this.http.post<Project[]>(`${this.apiUrl}/projects`, project);
+  // Update a project
+  updateProject(project: Project): Observable<ProjectResponse> {
+    return this.http.put<ProjectResponse>(`${this.apiUrl}/projects/${project.id}`, project);
   }
 
-  updateProject(id: number, project: Project): Observable<Project> {
-    return this.http.put<Project>(`${this.apiUrl}/projects/${id}`, project);
+  // Delete a project
+  deleteProject(id: number): Observable<ProjectResponse> {
+    return this.http.delete<ProjectResponse>(`${this.apiUrl}/projects/${id}`);
   }
 
-  deleteProject(id: number): Observable<Project> {
-    return this.http.delete<Project>(`${this.apiUrl}/projects/${id}`);
-  }
-  deleteProjects(projects: Project[]): Observable<Project[]> {
-    return forkJoin(
-      projects.map((project) =>
-        this.http.delete<Project>(`${this.apiUrl}/${project.id}`)
-      )
-    );
+  // Get all projects
+  getProjects(): Observable<ProjectResponse> {
+    return this.http.get<ProjectResponse>(`${this.apiUrl}/projects`);
   }
 }
