@@ -1,32 +1,26 @@
-  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-    <div class="container">
-      <a class="navbar-brand" >ProjectApp</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink=" ">Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
+            <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="projects" routerLinkActive="active">Projects</a>
+            <a class="nav-link" [routerLink]="['/projects']" routerLinkActive="active">Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="services" routerLinkActive="active">Services</a>
+            <a class="nav-link" [routerLink]="['/services']" routerLinkActive="active">Services</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="data" routerLinkActive="active">Datapoints</a>
-          </li>
-        </ul>
+            </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" style="color: black;" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-success" style="color: whitesmoke;" type="submit">Search</button>
+        </form>
       </div>
     </div>
   </nav>

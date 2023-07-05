@@ -6,3 +6,7 @@
       display: inline-block;
     }
   }
+  .navbar .active {
+    color: rgb(0, 162, 255);
+  }
+

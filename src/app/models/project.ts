@@ -1,3 +1,10 @@
+export interface ProjectResponse {
+  status: number;
+  message: string;
+  data: Project[] | null;
+}
+
+
 export interface Project {
   id: number;
   name: string;

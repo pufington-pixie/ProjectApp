@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="card">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h4 class=p-heading> </h4>
+      <div class="button-container">
+        <button pButton type="button" label="Upload File" (click)="showDialog()"></button>
+        <p-dialog header="File Upload" [(visible)]="displayModal" [modal]="true" [responsive]="true">
+          <div class="p-fluid">
+            <div class="p-field">
+              <label for="fileInput">Select File:</label>
+              <input id="fileInput" type="file" (change)="onFileSelected($event)" accept=".csv">
+            </div>
+          </div>
+          <div class="p-dialog-footer">
+            <button pButton type="button" label="Upload" (click)="onSubmit()"></button>
+            <button pButton type="button" label="Cancel" (click)="onCancel()" class="p-button-secondary"></button>
+          </div>
+        </p-dialog>
+        <p-toast></p-toast>
+        <button class="btn btn-primary mr-2" [disabled]="!selectedDataPoint?.id" (click)="editdatapoint()">
+         <i class="fas fa-edit"></i> Edit
+        </button>
+      </div>
+    </div>
+    <div class="card">
+      <p-table [value]="datapoints"  styleClass="p-datatable-gridlines" [resizableColumns]="true" [paginator]="true" [rows]="30"
+      [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[30, 60, 90]"
+      selectionMode="single" [(selection)]="selectedDataPoint" dataKey="id" [sortMode]="'multiple'" (onSort)="onSort()">
+      <ng-template pTemplate="caption"> Datapoints </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 4rem">
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+         <th pSortableColumn="id" style="width: 20%">
+            ID
+           <p-sortIcon field="id"></p-sortIcon>
+          </th>
+          <th pSortableColumn="EquipID" style="width: 20%">
+            EquipID
+            <p-sortIcon field="EquipID"></p-sortIcon>
+          </th>
+          <th pSortableColumn="System" style="width: 20%">
+            System
+            <p-sortIcon field="System"></p-sortIcon>
+ </th>
+         <th pSortableColumn="branch" style="width: 20%">
+ Branch
+           <p-sortIcon field="branch"></p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-datapoints>
+        <tr [pSelectableRow]="datapoints"
+          [ngClass]="{'table-primary': selectedDataPoint && selectedDataPoint.id === datapoints.id}"
+          (click)="selectedDataPoint = datapoints">
+          <td>
+            <p-tableCheckbox [value]="datapoints"></p-tableCheckbox>
+          </td>
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+               <input pInputText [(ngModel)]="datapoints.id" required>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ datapoints.id }}
+              </ng-template>
+ </p-cellEditor>
+          </td>
+         <td pEditableColumn>
+           <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText [(ngModel)]="datapoints.EquipID" required>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ datapoints.EquipID }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+         <td pEditableColumn>
+           <p-cellEditor>
+              <ng-template pTemplate="input">
+               <input pInputText [(ngModel)]="datapoints.System" required>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ datapoints.System }}
+              </ng-template>
+            </p-cellEditor>
+ </td>
+         <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+               <input pInputText [(ngModel)]="datapoints.branch" required>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ datapoints.branch }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+</div>
+   

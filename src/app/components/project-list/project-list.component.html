@@ -1,30 +1,38 @@
 <div class="container">
-  <div class="card mb-3">
-    <div class="card-header">Projects</div>
-    <div class="button-container">
-      <button class="btn btn-primary" [disabled]="!selectedProjectId" (click)="editProject()">Edit</button>
-      <button class="btn btn-primary" [disabled]="!selectedProjectId" (click)="deleteProject()">Delete</button>
-      <button class="btn btn-primary" (click)="createProject()">New</button>
+  <div class="card">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h4>Selected Project: {{ selectedProject?.name }}</h4>
+      <div class="button-container">
+        <button class="btn btn-primary mr-2" [disabled]="!selectedProject?.id" (click)="editProject(selectedProject?.id)">
+          <i class="fas fa-edit"></i> Edit
+        </button>
+        <button class="btn btn-danger" [disabled]="!selectedProject?.id" (click)="deleteProject()">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+        <button class="btn btn-success" (click)="createProject()">
+          <i class="fas fa-plus"></i> New
+        </button>
+      </div>
     </div>
-    <table class="card-body table table-hover">
-      <thead>
+    <p-table [value]="projects" selectionMode="single" [(selection)]="selectedProject" dataKey="id"
+  [tableStyle]="{'min-width': '60rem'}" class="custom-grid">
+      <ng-template pTemplate="header">
         <tr>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Date</th>
+          <th pSortableColumn="id" style="width:20%">ID <p-sortIcon field="id"></p-sortIcon></th>
+          <th pSortableColumn="name" style="width:20%">Name <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="title" style="width:20%">Title <p-sortIcon field="title"></p-sortIcon></th>
+          <th pSortableColumn="branch" style="width:20%">Branch <p-sortIcon field="quantity"></p-sortIcon></th>
         </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let project of projects" [class.selected]="selectedProjectId === project.id" (click)="selectProject(project)">
+      </ng-template>
+      <ng-template pTemplate="body" let-project>
+        <tr [pSelectableRow]="project" [ngClass]="{'table-primary': selectedProject && selectedProject.id === project.id}"
+          (click)="selectedProject = project">
           <td>{{ project.id }}</td>
+          <td>{{ project.name }}</td>
           <td>{{ project.title }}</td>
-          <td>{{ project.date }}</td>
+          <td>{{ project.branch }}</td>
         </tr>
-      </tbody>
-    </table>
-    <div *ngIf="projects.length === 0">
-      No projects found.
-    </div>
+      </ng-template>
+    </p-table>
   </div>
-  <app-project-upload *ngIf="selectedProjectId" [projectId]="selectedProjectId"></app-project-upload>
 </div>

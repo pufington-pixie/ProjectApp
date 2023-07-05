@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Project } from 'src/app/models/project';
@@ -28,6 +28,7 @@ export class ProjectFormComponent implements OnInit {
   };
   isNewProject: boolean = true;
   fileSelected: boolean = false;
+  @Input() projectId :number
 
   constructor(
     private route: ActivatedRoute,
@@ -57,21 +58,13 @@ export class ProjectFormComponent implements OnInit {
 
   saveProject(): void {
     if (this.isNewProject) {
-      this.projectService.createProject(this.project).pipe(
-        tap((response: any) => {
-          console.log('New project created:', response);
-        })
-      ).subscribe((response: any) => {
-        console.log('Response received:', response);
+      this.projectService.createProject(this.project)
+      .subscribe(() => {
         this.router.navigate(['/projects']);
       });
     } else {
-      this.projectService.updateProject(this.project.id, this.project).pipe(
-        tap((response: any) => {
-          console.log('Project updated:', response);
-        })
-      ).subscribe((response: any) => {
-        console.log('Response received:', response);
+      this.projectService.updateProject( this.project)
+      .subscribe(() => {
         this.router.navigate(['/projects']);
       });
     }
