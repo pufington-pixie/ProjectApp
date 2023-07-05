@@ -1,11 +1,8 @@
 .container {
-  position: relative;
+  margin-top: 20px;
 }
 
 .button-container {
-  position: absolute;
-  top: -40px; 
-  right: 10px; 
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
